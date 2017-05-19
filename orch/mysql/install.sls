@@ -1,40 +1,34 @@
 fileserver_update:
   salt.runner:
     - name: state.orch
-    - mods: orch.salt-update
-
-mysql_cleanup:
-  salt.state:
-    - tgt: 'master-mom'
-    - sls:
-      - mysql.removed
+    - mods: orch.sys.salt.update
 
 mysql_install_1:
   salt.state:
     - tgt: 'master-mom'
     - sls: 
-      - mysql.installed
-
-mysql_install_2:
-  salt.state:
-    - tgt: 'master-mom'
-    - sls: 
-      - mysql.installed
+      - sys.mysql.installed
 
 mysql_redhat_password_fix:
   salt.state:
     - tgt: 'master-mom'
     - sls: 
-      - mysql.redhat_root
+      - sys.mysql.redhat_root
 
 mysql_users:
   salt.state:
     - tgt: 'master-mom'
     - sls: 
-      - mysql.users
+      - sys.mysql.users
 
 mysql_databases:
   salt.state:
     - tgt: 'master-mom'
     - sls: 
-      - mysql.databases
+      - sys.mysql.databases
+
+dyn_top_install:
+  salt.state:
+    - tgt: 'master-mom'
+    - sls:
+      - sys.mysql.dyn_top
