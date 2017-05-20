@@ -7,28 +7,28 @@ mysql_install_1:
   salt.state:
     - tgt: 'master-mom'
     - sls: 
-      - sys.mysql.installed
+      - sys.install.mysql
 
 mysql_redhat_password_fix:
   salt.state:
     - tgt: 'master-mom'
     - sls: 
-      - sys.mysql.redhat_root
+      - sys.other.mysql.rh_root
 
 mysql_users:
   salt.state:
     - tgt: 'master-mom'
     - sls: 
-      - sys.mysql.users
+      - sys.other.mysql.users
 
 mysql_databases:
   salt.state:
     - tgt: 'master-mom'
     - sls: 
-      - sys.mysql.databases
+      - sys.other..mysql.databases
 
 dyn_top_install:
   salt.state:
     - tgt: 'master-mom'
     - sls:
-      - sys.mysql.dyn_top
+      - sys.top.mysql
