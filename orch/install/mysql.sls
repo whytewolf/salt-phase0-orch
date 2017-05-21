@@ -25,7 +25,7 @@ mysql_databases:
   salt.state:
     - tgt: 'master-mom'
     - sls: 
-      - sys.other..mysql.databases
+      - sys.other.mysql.databases
 
 dyn_top_install:
   salt.state:
