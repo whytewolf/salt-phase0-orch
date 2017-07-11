@@ -1,5 +1,5 @@
-{% target = salt.pillar.get('target','master-mom') %}
-{% target_type = salt.pillar.get('target_type','glob') %}
+{% target = pillar.get('target','master-mom') %}
+{% target_type = pillar.get('target_type','glob') %}
 
 fileserver_update:
   salt.runner:
