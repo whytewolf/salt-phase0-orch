@@ -1,4 +1,4 @@
 do_highstate:
   salt.state:
-    - tgt: '*'
+    - tgt: 'master-mom'
     - highstate: True
