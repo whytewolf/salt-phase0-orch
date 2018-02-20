@@ -14,7 +14,6 @@ mysql_install:
 
 mysql_redhat_password_fix:
   salt.state:
-    - tgt: 'master-mom'
     - tgt: {{target}}
     - tgt_type: {{target_type}}
     - sls: sys.other.mysql.rh_root
@@ -39,7 +38,6 @@ mysql_databases:
 
 dyn_top_install:
   salt.state:
-    - tgt: 'master-mom'
     - tgt: {{target}}
     - tgt_type: {{target_type}}
     - sls: sys.top.mysql
