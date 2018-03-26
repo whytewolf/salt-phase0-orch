@@ -1,4 +1,4 @@
 do_highstate:
   salt.state:
-    - tgt: 'master-mom'
+    - tgt: {{ salt.pillar.get('target')}}
     - highstate: True
