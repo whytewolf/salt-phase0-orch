@@ -8,12 +8,15 @@ master_sync_all:
     - require:
       - salt: fileserver_update
 
-
+{% if 'git' in salt.saltutil.runner('config.get',arg=["ext_pillar"]) %}
 git_pillar_update:
   salt.runner:
     - name: git_pillar.update
     - require:
       - salt: fileserver_update
+    - require_in:
+      - salt: pillar_refresh
+{%endif%}
 
 minion_sync_all:
   salt.function:
@@ -28,8 +31,6 @@ pillar_refresh:
     - tgt: '*'
     - name: saltutil.pillar_refresh
     - batch: '10%'
-    - require:
-      - salt: git_pillar_update
 
 mine_update:
   salt.function:
@@ -46,7 +47,7 @@ update_winrepo:
     - name: winrepo.update_git_repos
 
 update_winrepo_databases:
-  salt.funtion:
+  salt.function:
     - name: pkg.refresh_db
     - tgt: 'os:Windows'
     - tgt_type: grain
