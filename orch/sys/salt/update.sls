@@ -13,7 +13,7 @@ git_pillar_update:
   salt.runner:
     - name: git_pillar.update
     - require:
-      - salt: fileserver_update
+      - salt: master_sync_all
     - require_in:
       - salt: pillar_refresh
 {%endif%}
